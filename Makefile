@@ -1,3 +1,2 @@
-all: main
-	gcc -Wall -wextra -pedantic -L/usr/local/lib -lcrypto -o main main.c
-	./main
+main: main.c
+	gcc -Wall -Wextra -pedantic -L/usr/lib -lcrypto -o main main.c /usr/lib/x86_64-linux-gnu/libcrypto.a # i'm too lazy to fix this shit ...

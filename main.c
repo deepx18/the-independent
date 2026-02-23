@@ -8,9 +8,6 @@
 
 #define BUFFER_SIZE 4096
 
-// typedef struct {
-// } bufs;
-
 void sha256(const char *str, unsigned char output[SHA256_DIGEST_LENGTH]) {
     SHA256((const unsigned char *)str, strlen(str), output);
 }
@@ -46,16 +43,9 @@ void go_rebuild_urself(void) {
     unsigned char hash[SHA256_DIGEST_LENGTH];
     sha256(buf, hash);
 
-    // for (int i = 0; i < SHA256_DIGEST_LENGTH; i++)
-    //         printf("%02x", hash[i]);
-    // printf("\n");
 
     unsigned char old_hash[SHA256_DIGEST_LENGTH];
     sha256(old_buf, old_hash);
-
-    // for (int i = 0; i < SHA256_DIGEST_LENGTH; i++)
-    //         printf("%02x", old_hash[i]);
-    // printf("\n");
 
     if (!hashcmp(old_hash, hash)) {
         int res = system("gcc -L/usr/lib -lcrypto -o main main.c /usr/lib/x86_64-linux-gnu/libcrypto.a");
@@ -80,21 +70,3 @@ int main() {
     printf("Hello, Planet!\n");
     return 0;
 }
-
-
-// #include <stdio.h>
-
-// int main () {
-//     const char *pathname = "/usr/bin/clear";
-//     char *const argv[] = {"/usr/bin/clear", NULL};
-//     execv(pathname, argv);
-
-//     //execv(
-//     //  (const char *)"echo",
-//     //    (char *const []){
-//     //      "echo",
-//     //      "Abderrahmane Majid"
-//     //    }
-//     //  );
-//     return 0;
-// }
